@@ -16,12 +16,35 @@
   }
 }
 
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  /* color: rgb(var(--foreground-rgb)); */
+}
+
+.hero {
+  --nav-height: 100px;
+  position: relative;
+  margin-top: calc(var(--nav-height) * -1);
+  padding-top: calc(var(--nav-height) + 20px);
+  background-image: url(/assets/aurora.png);
+  background-position: center;
+  height: 724px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 10%;
+  width: 100%;
+  background-image: url(/assets/hero-bg.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
