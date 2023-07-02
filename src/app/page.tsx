@@ -78,7 +78,7 @@ function SocialProof() {
   );
 }
 
-export function PrimaryColourText({ children }: { children: string }) {
+function PrimaryColourText({ children }: { children: string }) {
   return <span className="text-primary-300">{children}</span>;
 }
 
@@ -176,11 +176,11 @@ function WhyScissor() {
   );
 }
 
-export function FormContainer({ children }: { children: React.ReactNode }) {
+function FormContainer({ children }: { children: React.ReactNode }) {
   return <div className="form-container | bg-white rounded-xl p-11">{children}</div>;
 }
 
-export function Footer() {
+function Footer() {
   return (
     <footer className="py-9">
       <Container className="pt-20">
@@ -206,7 +206,7 @@ export function Footer() {
   );
 }
 
-export function PaddedIcon({ icon }: { icon: string }) {
+function PaddedIcon({ icon }: { icon: string }) {
   return (
     <span className="relative flex justify-center items-center bg-black w-12 rounded-full aspect-[1/1] bg-primary-20">
       <i className={`${icon} text-xl absolute text-primary-400`}></i>
