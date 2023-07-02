@@ -11,13 +11,19 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-gray-linear": "var(--gradient-gray-linear)",
       },
       colors: {
-        primary: { 400: "hsla(216, 100%, 44%, 1)", 300: "hsla(216, 100%, 50%, 1)" },
+        primary: {
+          20: "var(--clr-primary-20)",
+          100: "var(--clr-primary-100)",
+          200: "var(--clr-primary-200)",
+          300: "var(--clr-primary-300)",
+          400: "var(--clr-primary-400)",
+        },
         text: { 400: "hsla(0, 0%, 8%, 1)" },
         gray: { 100: "hsla(210, 55%, 98%, 1)" },
+        accent: "#1E3448",
       },
     },
   },

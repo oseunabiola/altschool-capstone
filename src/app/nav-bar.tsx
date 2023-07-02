@@ -4,27 +4,20 @@ import Logo from "../../public/assets/Logo.svg";
 import { Container } from "./layout";
 
 const navLinks = [
-  { path: "/my-urls", label: "My URLs" },
-  { path: "/features", label: "Features" },
-  { path: "/pricing", label: "Pricing" },
-  { path: "/analytics", label: "Analytics" },
-  { path: "/faqs", label: "FAQs" },
+  // { path: "/pricing", label: "Pricing" },
+  // { path: "/analytics", label: "Analytics" },
+  // { path: "/my-urls", label: "My URLs" },
+  { path: "/#features", label: "Features" },
+  { path: "/#faqs", label: "FAQs" },
 ];
 
 export function NavBar() {
   return (
-    <header className="py-2 sticky top-0 h-16 z-10">
+    <header className="py-2 top-0 h-16 z-10">
       <Container className="flex items-center justify-between font-medium">
         <div className="md:grow-[5]">
           <Link href="/">
-            <Image
-              src={Logo}
-              alt="Scissor Logo"
-              className="dark:invert"
-              width={155}
-              height={37}
-              priority
-            />
+            <Image src={Logo} alt="Scissor Logo" className="text-primary-300" priority />
           </Link>
         </div>
         <nav className="nav | flex md:grow-[8] justify-between">

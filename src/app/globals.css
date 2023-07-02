@@ -6,14 +6,16 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --clr-primary-20: #3385ff21;
+  --clr-primary-100: #3284ff;
+  --clr-primary-200: #4991ff;
+  --clr-primary-300: #0066ff;
+  --clr-primary-400: #005ae0;
+  --gradient-gray-linear: linear-gradient(#112232, #4d6b88);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  /* color-scheme: light dark; */
 }
 
 *,
@@ -23,17 +25,36 @@
 }
 
 body {
-  /* color: rgb(var(--foreground-rgb)); */
+  min-height: 100vh;
+  min-height: 100dvh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
 
 .hero {
   --nav-height: 100px;
-  position: relative;
   margin-top: calc(var(--nav-height) * -1);
   padding-top: calc(var(--nav-height) + 20px);
   background-image: url(/assets/aurora.png);
   background-position: center;
-  height: 724px;
+  min-height: 724px;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -47,4 +68,20 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.with-left-highlighter {
+  position: relative;
+  /* margin-inline-start: 1rem; */
+}
+.with-left-highlighter::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin-inline-start: -0.5rem;
+  background: var(--gradient-gray-linear);
 }
