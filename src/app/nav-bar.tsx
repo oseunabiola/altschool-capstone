@@ -1,7 +1,7 @@
+import { Container } from "@/components/ui";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../public/assets/Logo.svg";
-import { Container } from "./layout";
 
 const navLinks = [
   // { path: "/pricing", label: "Pricing" },
@@ -13,7 +13,7 @@ const navLinks = [
 
 export function NavBar() {
   return (
-    <header className="py-2 top-0 h-16 z-10">
+    <header className="py-2 h-16 z-10">
       <Container className="flex items-center justify-between font-medium">
         <div className="md:grow-[5]">
           <Link href="/">
@@ -40,7 +40,7 @@ export function NavBar() {
   );
 }
 
-function NavLink({ path, label, key }: { path: string; label: string; key: string }) {
+function NavLink({ path, label }: { path: string; label: string }) {
   return (
     <li className="me-10">
       <Link href={path}>{label}</Link>

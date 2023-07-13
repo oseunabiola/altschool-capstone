@@ -1,27 +1,22 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import LogoBlack from "../../public/assets/logo-black.svg";
-import { Container } from "./layout";
+import { LandingPageScissor } from "@/components/common/landing-pagescissors";
+import { Container } from "@/components/ui";
+import { LandingPageLayout } from "./layout";
 import { TextButtonPrimary, TextButtonSecondary } from "./nav-bar";
 
 export default function Home() {
   return (
-    <>
+    <LandingPageLayout>
       <Hero />
-      <main className="flex flex-col">
-        <SocialProof />
-        <WhyScissor />
-        <LandingPageScissor />
-      </main>
-      <Footer />
-    </>
+      <SocialProof />
+      <WhyScissor />
+      <LandingPageScissor />
+    </LandingPageLayout>
   );
 }
 
 function Hero() {
   return (
-    <div className="hero | relative">
+    <div className="hero | relative -z-[1]">
       <Container className="py-20 text-center">
         <div className="mx-auto w-11/12 mb-5">
           <h1 className="font-bold text-5xl leading-[3.5rem] md:leading-[4rem]">
@@ -82,44 +77,6 @@ function PrimaryColourText({ children }: { children: string }) {
   return <span className="text-primary-300">{children}</span>;
 }
 
-function LandingPageScissor() {
-  return (
-    <section className="landing-page-scissor | bg-accent py-24">
-      <Container>
-        <div className="md:w-2/3 lg:w-2/6 mx-auto">
-          <FormContainer>
-            <form className="text-primary-300 text-sm">
-              <input
-                type="text"
-                className="form-control | mb-6 border-[1.5px] rounded-xl py-3 px-4 w-full border-primary-300 placeholder:text-primary-300"
-                placeholder="Your URL here..."
-              />
-              <input
-                type="text"
-                className="form-control | mb-6 border-[1.5px] rounded-xl py-3 px-4 w-full border-primary-300 focus:outline-primary-300 placeholder:text-primary-300"
-                placeholder="Type an alias here"
-              />
-              <p className="text-primary-100 mb-6">
-                By submitting, I agree to the{" "}
-                <Link href="term-of-service" className="font-semibold">
-                  Terms of Service
-                </Link>
-              </p>
-              <div className="grid">
-                <button
-                  type="submit"
-                  className="py-3 px-4 bg-primary-400 text-white rounded-2xl hover:bg-primary-300">
-                  Shorten it <i className="bi bi-magic -rotate-45"></i>
-                </button>
-              </div>
-            </form>
-          </FormContainer>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
 function WhyScissor() {
   return (
     <section className="py-10 md:py-20 lg:py-32" id="features">
@@ -173,36 +130,6 @@ function WhyScissor() {
         </div>
       </Container>
     </section>
-  );
-}
-
-function FormContainer({ children }: { children: React.ReactNode }) {
-  return <div className="form-container | bg-white rounded-xl p-11">{children}</div>;
-}
-
-function Footer() {
-  return (
-    <footer className="py-9">
-      <Container className="pt-20">
-        <div className="brand | flex items-center flex-col">
-          <Image src={LogoBlack} alt="Scissor logo" className="mb-4" />
-          <div className="social-links">
-            <a href="#" className="p-2">
-              <i className="bi bi-twitter"></i>
-            </a>
-            <a href="#" className="p-2">
-              <i className="bi bi-facebook"></i>
-            </a>
-          </div>
-        </div>
-      </Container>
-      <Container className="text-sm">
-        <div className="flex items-center justify-between">
-          <Link href="#">Term of service </Link>
-          <p>&copy; All Rights Reserved</p>
-        </div>
-      </Container>
-    </footer>
   );
 }
 

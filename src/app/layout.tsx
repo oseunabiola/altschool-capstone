@@ -1,3 +1,5 @@
+"use client";
+import { Footer } from "@/components/common";
 import localFont from "next/font/local";
 import "./globals.css";
 import { NavBar } from "./nav-bar";
@@ -27,19 +29,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={`${gilroy.className} text-text-400`}>
-        <NavBar />
-        {children}
+        <div className="page-wrapper | grid grid-rows-[auto_1fr_auto] min-h-screen">{children}</div>
       </body>
     </html>
   );
 }
 
-export function Container({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return <div className={`container | ${className} px-[5%] mx-auto `}>{children}</div>;
+export function LandingPageLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <NavBar />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
 }
