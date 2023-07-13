@@ -12,6 +12,7 @@ export function LandingPageScissor() {
   const [formValue, setFormValue] = useState({ url: "", alias: "" });
   const [shortened, setShortened] = useState("");
   const [submitError, setSubmitError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   function validate({ url, alias }: { url: string; alias: string }) {
     logger("Validating form...");
@@ -40,6 +41,7 @@ export function LandingPageScissor() {
     event.preventDefault();
     setSubmitError("");
     setShortened("");
+    setSubmitting(true);
 
     const url = formValue.url;
     const alias = formValue.alias;
@@ -68,6 +70,8 @@ export function LandingPageScissor() {
       } else {
         setSubmitError("Oops! Something went wrong. Please try again.");
       }
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -77,7 +81,7 @@ export function LandingPageScissor() {
   return (
     <section className="landing-page-scissor | bg-accent py-24">
       <Container>
-        <div className="md:w-2/3 lg:w-2/6 mx-auto">
+        <div className="md:w-1/3 lg:w-[35%] mx-auto">
           <div className="bg-white rounded-xl p-11">
             <form className="text-primary-300 text-sm" onSubmit={handleSubmit}>
               {submitError ? (
@@ -116,7 +120,8 @@ export function LandingPageScissor() {
               <div className="grid">
                 <button
                   type="submit"
-                  className="py-3 px-4 bg-primary-400 text-white rounded-2xl hover:bg-primary-300">
+                  className="py-3 px-4 bg-primary-400 text-white rounded-2xl hover:bg-primary-300"
+                  disabled={submitting}>
                   Shorten it <i className="bi bi-magic -rotate-45"></i>
                 </button>
               </div>
@@ -124,18 +129,20 @@ export function LandingPageScissor() {
 
             {shortened ? (
               <div
-                className="mt-4 bg-green-400 text-green-900 rounded-xl text-sm flex items-center justify-between overflow-hidden"
+                className="mt-4 bg-green-400 text-green-900 rounded-xl text-sm flex overflow-hidden"
                 style={{ ["--spacing-x"]: "1rem" } as CSSProperties}>
-                <span className="block py-3 px-[var(--spacing-x)]">{shortened}</span>
+                <span className=" flex-grow overflow-hidden py-3 px-[var(--spacing-x)]">
+                  {shortened}
+                </span>
                 <button
-                  className="py-3 px-[var(--spacing-x)] hover:bg-green-700 hover:text-white hover:cursor-pointer active:bg-green-900"
+                  className="py-3 ms-[var(--spacing-x)] hover:bg-green-700 hover:text-white hover:cursor-pointer active:bg-green-900"
                   onClick={() => copyToClipboard(shortened)}
                   onKeyUp={(e) => {
                     if (["Space", "Enter"].includes(e.code)) {
                       copyToClipboard(shortened);
                     }
                   }}>
-                  <i className="bi bi-files" title="Copy to clipboard" tabIndex={0} />
+                  <i className="bi bi-files px-4" title="Copy to clipboard" tabIndex={0} />
                 </button>
               </div>
             ) : null}

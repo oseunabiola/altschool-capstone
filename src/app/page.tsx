@@ -1,4 +1,4 @@
-import { LandingPageScissor } from "@/components/common/landing-pagescissors";
+import { LandingPageScissor } from "@/components/common/landing-page-scissors";
 import { Container } from "@/components/ui";
 import { LandingPageLayout } from "./layout";
 import { TextButtonPrimary, TextButtonSecondary } from "./nav-bar";
