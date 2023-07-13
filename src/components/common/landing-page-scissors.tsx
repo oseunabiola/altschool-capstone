@@ -61,11 +61,14 @@ export function LandingPageScissor() {
     try {
       const url = process.env.NEXT_PUBLIC_BACKEND_URL + "/scissors";
       const response = await (await fetch(url, options)).json();
+      if (!response.ok) throw new Error("Oops! Something went wrong. Please try again.");
 
-      setShortened(response.data.shortenedURL);
+      const responsePayload = await response.json();
+
+      setShortened(responsePayload.data.shortenedURL);
     } catch (error) {
       logger(error);
-      if (error instanceof Error) {
+      if (error instanceof Error && error.message) {
         setSubmitError(error.message);
       } else {
         setSubmitError("Oops! Something went wrong. Please try again.");
